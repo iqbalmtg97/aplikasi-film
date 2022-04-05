@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class KelolaFilmController extends Controller
 {
@@ -22,7 +23,7 @@ class KelolaFilmController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $attr = $this->validate($request, [
+        $this->validate($request, [
             'judul_film' => 'required',
             'genre' => 'required',
             'status' => 'required',
