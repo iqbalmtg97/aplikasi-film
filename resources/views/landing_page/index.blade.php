@@ -60,51 +60,6 @@
                             <a href="#" onclick="getdata({{ $st->id }})" id="{{ $st->id }}"
                                 class="btn btn-success rating" data-toggle="modal" data-target="#rating">Beri Nilai Film
                                 Ini</a>
-                            <div class="p-4 text-center">
-                                <h5 class="font-16 m-b-15">Readonly rating with a value</h5>
-                                <span style="cursor: default;">
-                                    <div class="rating-symbol" style="display: inline-block; position: relative;">
-                                        <div class="rating-symbol-background mdi mdi-star-outline font-32 text-muted"
-                                            style="visibility: hidden;"></div>
-                                        <div class="rating-symbol-foreground"
-                                            style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: auto;">
-                                            <span class="mdi mdi-star font-32 text-primary"></span>
-                                        </div>
-                                    </div>
-                                    <div class="rating-symbol" style="display: inline-block; position: relative;">
-                                        <div class="rating-symbol-background mdi mdi-star-outline font-32 text-muted"
-                                            style="visibility: hidden;"></div>
-                                        <div class="rating-symbol-foreground"
-                                            style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: auto;">
-                                            <span class="mdi mdi-star font-32 text-primary"></span>
-                                        </div>
-                                    </div>
-                                    <div class="rating-symbol" style="display: inline-block; position: relative;">
-                                        <div class="rating-symbol-background mdi mdi-star-outline font-32 text-muted"
-                                            style="visibility: hidden;"></div>
-                                        <div class="rating-symbol-foreground"
-                                            style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: auto;">
-                                            <span class="mdi mdi-star font-32 text-primary"></span>
-                                        </div>
-                                    </div>
-                                    <div class="rating-symbol" style="display: inline-block; position: relative;">
-                                        <div class="rating-symbol-background mdi mdi-star-outline font-32 text-muted"
-                                            style="visibility: visible;"></div>
-                                        <div class="rating-symbol-foreground"
-                                            style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: 0%;">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="rating-symbol" style="display: inline-block; position: relative;">
-                                        <div class="rating-symbol-background mdi mdi-star-outline font-32 text-muted"
-                                            style="visibility: visible;"></div>
-                                        <div class="rating-symbol-foreground"
-                                            style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: 0px;">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </span>
-                            </div>
                             @include('landing_page.modalrating')
                         </center>
                     </div>

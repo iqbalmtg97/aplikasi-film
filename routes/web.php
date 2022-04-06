@@ -18,6 +18,8 @@ use App\Http\Controllers\LandingController;
 */
 
 Route::get('/', [LandingController::class, 'index']);
+Route::get('/sedang_tayang', [LandingController::class, 'sedangTayang']);
+Route::get('/segera_hadir', [LandingController::class, 'segeraHadir']);
 
 Auth::routes();
 
@@ -31,12 +33,8 @@ Route::group(['middleware' => ['auth', 'checkRole:Admin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:User']], function () {
-    Route::get('/sedang_tayang', [LandingController::class, 'sedangTayang']);
-    Route::get('/segera_hadir', [LandingController::class, 'segeraHadir']);
     Route::get('/favorit', [LandingController::class, 'favorit']);
     Route::get('/tambahFavorit', [LandingController::class, 'tambahFavorit']);
     Route::get('/getdatafilm/{id}', [LandingController::class, 'getdata']);
     Route::post('/rating', [LandingController::class, 'rating']);
 });
-
-// Route::get('/kelola_film', [KelolaFilmController::class, 'index']);

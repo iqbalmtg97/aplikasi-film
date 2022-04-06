@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilmApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/film', [FilmApiController::class, 'index']);
+Route::post('/film', [FilmApiController::class, 'store']);
+Route::put('/film/{id}', [FilmApiController::class, 'update']);
+Route::delete('/film/{id}', [FilmApiController::class, 'destroy']);
