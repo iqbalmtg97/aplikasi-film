@@ -9,7 +9,6 @@
                 <form action="{{ url('/kelola_film/update') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" id="id" name="id" value="">
-                    {{-- <input type="hidden" id="oldImage" name="oldImage" value=""> --}}
                     <input type="hidden" id="url_getdata" name="url_getdata" value="{{ url('getdata/') }}">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Judul Film</label>
@@ -50,13 +49,15 @@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Gambar</label>
-                        <input type="file" class="form-control" id="gambar" name="gambar"
-                            value="{{ old('gambar') }}" placeholder="Masukkan Gambar ...">
+                        <input type="file" class="form-control" name="gambar" value="{{ old('gambar') }}"
+                            placeholder="Masukkan Gambar ...">
                         @error('gambar')
                             <div class="text-danger ml-3 mt-2">
                                 {{ $message }}
                             </div>
                         @enderror
+                        <input class="form-control text-center" type="text" value="" name="view_gambar" id="gambar"
+                            disabled>
                     </div>
             </div>
             <div class="modal-footer">
@@ -83,7 +84,7 @@
                 $('#judul_film').val(response.judul_film);
                 $('#genre').val(response.genre);
                 $('#status_').val(response.status);
-                $('#oldImage').val(response.gambar);
+                $('#gambar').val(response.gambar);
             }
         });
     }
