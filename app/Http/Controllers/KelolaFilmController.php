@@ -23,12 +23,34 @@ class KelolaFilmController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $this->validate($request, [
+        // $this->validate($request, [
+        //     'judul_film' => 'required',
+        //     'genre' => 'required',
+        //     'status' => 'required',
+        //     'gambar' => 'required',
+        // ]);
+
+        $rules = [
             'judul_film' => 'required',
             'genre' => 'required',
             'status' => 'required',
             'gambar' => 'required',
-        ]);
+        ];
+
+        $text = [
+            'judul_film.required' => 'Kolom Judul Film Tidak Boleh Kosong',
+            'genre.required' => 'Kolom Genre Tidak Boleh Kosong',
+            'status.required' => 'Kolom Status Tidak Boleh Kosong',
+            'gambar.required' => 'Kolom Gambar Tidak Boleh Kosong',
+        ];
+
+        $validasi = Validator::make($request->all(), $rules, $text);
+
+
+        if ($validasi->fails()) {
+            return redirect()->back()->withErrors($validasi)->with('gagal', 'Film Gagal Disimpan, Ada Kesalahan Inputan !!!');
+        }
+
 
         $store = Film::create($request->all());
 
@@ -41,12 +63,30 @@ class KelolaFilmController extends Controller
 
     public function update(Request $request)
     {
-        $this->validate($request, [
+        // $this->validate($request, [
+        //     'judul_film' => 'required',
+        //     'genre' => 'required',
+        //     'status' => 'required',
+        // ]);
+
+        $rules = [
             'judul_film' => 'required',
             'genre' => 'required',
             'status' => 'required',
-        ]);
+        ];
 
+        $text = [
+            'judul_film.required' => 'Kolom Judul Film Tidak Boleh Kosong',
+            'genre.required' => 'Kolom Genre Tidak Boleh Kosong',
+            'status.required' => 'Kolom Status Tidak Boleh Kosong',
+        ];
+
+        $validasi = Validator::make($request->all(), $rules, $text);
+
+
+        if ($validasi->fails()) {
+            return redirect()->back()->withErrors($validasi)->with('gagal', 'Film Gagal Disimpan, Ada Kesalahan Inputan !!!');
+        }
         $data = Film::find($request->id);
         if ($request->file('gambar')) {
             if ($request->oldImage) {
