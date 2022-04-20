@@ -48,7 +48,7 @@ class KelolaFilmController extends Controller
 
 
         if ($validasi->fails()) {
-            return redirect()->back()->withErrors($validasi)->with('gagal', 'Film Gagal Disimpan, Ada Kesalahan Inputan !!!');
+            return redirect()->back()->withErrors($validasi)->withInput()->with('gagal', 'Film Gagal Disimpan, Ada Kesalahan Inputan !!!');
         }
 
 
@@ -85,7 +85,7 @@ class KelolaFilmController extends Controller
 
 
         if ($validasi->fails()) {
-            return redirect()->back()->withErrors($validasi)->with('gagal', 'Film Gagal Disimpan, Ada Kesalahan Inputan !!!');
+            return redirect()->back()->withErrors($validasi)->withInput()->with('gagal', 'Film Gagal Disimpan, Ada Kesalahan Inputan !!!');
         }
         $data = Film::find($request->id);
         if ($request->file('gambar')) {

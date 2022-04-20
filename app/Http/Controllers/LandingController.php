@@ -6,6 +6,7 @@ use App\Models\Film;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LandingController extends Controller
 {
@@ -53,9 +54,39 @@ class LandingController extends Controller
 
         $sudah_ada = Rating::where('user_id', Auth::id())->where('film_id', $request->film_id)->first();
         if ($sudah_ada) {
+            $rules = [
+                'rating' => 'required',
+            ];
+
+            $text = [
+                'rating.required' => 'Rating Tidak Boleh Kosong',
+            ];
+
+            $validasi = Validator::make($request->all(), $rules, $text);
+
+
+            if ($validasi->fails()) {
+                return redirect()->back()->withErrors($validasi)->withInput()->with('gagal', 'Rating Tidak Boleh Kosong !!!');
+            }
+
             $sudah_ada->stars_rated = $request->rating;
             $sudah_ada->update();
         } else {
+            $rules = [
+                'rating' => 'required',
+            ];
+
+            $text = [
+                'rating.required' => 'Rating Tidak Boleh Kosong',
+            ];
+
+            $validasi = Validator::make($request->all(), $rules, $text);
+
+
+            if ($validasi->fails()) {
+                return redirect()->back()->withErrors($validasi)->withInput()->with('gagal', 'Rating Tidak Boleh Kosong !!!');
+            }
+
             $input = Rating::create([
                 'user_id' => Auth::id(),
                 'film_id' => $request->film_id,

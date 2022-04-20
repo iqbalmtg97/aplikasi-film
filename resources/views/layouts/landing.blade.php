@@ -198,7 +198,7 @@
 
     <script>
         @if (Session::has('sukses'))
-            toastr.success("{{ Session::get('sukses') }}", "Selamat")
+            toastr.success("{{ Session::get('sukses') }}", "Berhasil")
         @endif
 
         @if (Session::has('gagal'))

@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Judul Film</label>
                         <input type="text" class="form-control" name="judul_film" value="{{ old('judul_film') }}"
-                            placeholder="Masukkan Judul Film ...">
+                            placeholder="Masukkan Judul Film ..." autofocus>
                         @error('judul_film')
                             <div class="text-danger ml-3 mt-2">
                                 {{ $message }}
